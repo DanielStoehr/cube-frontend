@@ -1,19 +1,14 @@
-@if(file$ | async; as file) {
-  @if(file.type == 'init') {
-    <p>Bitte Würfel auflegen!</p>
-  } 
-  @if(file.type == 'none') {
-<p>unbekanntes Dateiformat!</p>
-  }
-  @if (file.type == 'image') {
-    <img [src]="file.url" alt="Image">
-  }
-  @if (file.type == 'movie') {
+@if (file$ | async; as file) {
+  @if (file.type == "none") {
+    <p>unbekanntes Dateiformat!</p>
+  } @else if (file.type == "image") {
+    <img [src]="file.url" alt="Image" />
+  } @else {
     <div class="video-container">
-    <video controls autoplay muted loop>
-      <source [src]="file.url" type="video/mp4">
-    Your browser does not support the video tag.
-    </video>
+      <video controls autoplay muted loop #ContentVideo id="content-video">
+        <source [src]="file.url" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
   }
 }

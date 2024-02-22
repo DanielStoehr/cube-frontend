@@ -1,4 +1,4 @@
 export interface ResponseType {
-  type: 'image' | 'movie' | 'none' | 'init';
+  type: 'image' | 'movie' | 'none';
   url: string;
 }
